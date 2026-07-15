@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Analyzer</title>
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🐙 GitHub Profile Analyzer</h1>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter GitHub Username">
+
+        <button onclick="loadProfile()">Analyze</button>
+    </div>
+
+    <div id="error"></div>
+
+    <div id="profile" class="hidden">
+
+        <!-- Profile Card -->
+        <div class="profile-card">
+
+            <img id="avatar">
+
+            <h2 id="name"></h2>
+
+            <p id="bio"></p>
+
+            <div class="details">
+
+                <p><strong>Username:</strong> <span id="login"></span></p>
+
+                <p><strong>Company:</strong> <span id="company"></span></p>
+
+                <p><strong>Location:</strong> <span id="location"></span></p>
+
+                <p>
+                    <a id="githubLink" target="_blank">
+                        View GitHub Profile
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+
+        <div class="stats">
+
+            <div class="card">
+                <h3 id="followers">0</h3>
+                <p>Followers</p>
+            </div>
+
+            <div class="card">
+                <h3 id="following">0</h3>
+                <p>Following</p>
+            </div>
+
+            <div class="card">
+                <h3 id="repos">0</h3>
+                <p>Repositories</p>
+            </div>
+
+            <div class="card">
+                <h3 id="stars">0</h3>
+                <p>Total Stars</p>
+            </div>
+
+            <div class="card">
+                <h3 id="forks">0</h3>
+                <p>Total Forks</p>
+            </div>
+
+        </div>
+
+        <!-- Chart -->
+
+        <div class="chart-container">
+
+            <h2>Languages Used</h2>
+
+            <canvas id="languageChart"></canvas>
+
+        </div>
+
+        <!-- Repository Table -->
+
+        <div class="repo-section">
+
+            <h2>Repositories</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Language</th>
+                        <th>Stars</th>
+                        <th>Forks</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="repoTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
